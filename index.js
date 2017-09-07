@@ -71,7 +71,7 @@ const execFile = function() {
 }
 
 const execCMD = function(){
-  child_process.exec('git add --all :/ && git commit -m "update" && git push origin master', function(error, stdout, stderr) {
+  child_process.exec('cd /D '+ __dirname + ' && git add --all :/ && git commit -m "update" && git push origin master', function(error, stdout, stderr) {
     if(error) {
         console.error('error: ' + error);
         return;
