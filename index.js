@@ -45,7 +45,7 @@ const crawlerMeta = new crawler({
           });
         });
         export_to_text(JSON.stringify(content), './file/' + moment().format("YYYY-MM-DDThh-mm-ss") + '.txt');
-        execFile();
+        execCMD();
       }
     }
     done();
@@ -63,11 +63,22 @@ const export_to_text = (data, filename) => {
 }
 
 const execFile = function() {
-  child_process.execFile('commit.bat', null, { maxBuffer: 5000 * 1024 }, function (error,stdout,stderr) {
+  child_process.execFile(getEnvScript(), null, { maxBuffer: 5000 * 1024 }, function (error,stdout,stderr) {
 		if (error !== null) {
 		  console.log('exec error: ' + error);
 		}
 	});
+}
+
+const execCMD = function(){
+  child_process.exec('git add --all :/ && git commit -m "update" && git push origin master', function(error, stdout, stderr) {
+    if(error) {
+        console.error('error: ' + error);
+        return;
+    }
+    console.log('stdout: ' + stdout);
+    console.log('stderr: ' + stderr);
+  })
 }
 
 const entry = ( )=> {

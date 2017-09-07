@@ -1,1 +1,1 @@
-schtasks /create /tn "auto-commit" /tr "cmd /c node index.js" /sc hourly /st 00:08:00
+schtasks /create /tn "auto-commit" /tr "cmd /c node E:\Code\GitHub\autoCommit\index.js" /sc hourly /mo 8
