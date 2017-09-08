@@ -45,7 +45,8 @@ const crawlerMeta = new crawler({
           });
         });
         export_to_text(JSON.stringify(content), './file/' + moment().format("YYYY-MM-DDThh-mm-ss") + '.txt');
-        execCMD();
+        const cmd = 'cd /D '+ __dirname + ' && git add --all :/ && git commit -m "update" && git push origin master';
+        execCMD(cmd);
       }
     }
     done();
@@ -70,8 +71,8 @@ const execFile = function() {
 	});
 }
 
-const execCMD = function(){
-  child_process.exec('cd /D '+ __dirname + ' && git add --all :/ && git commit -m "update" && git push origin master', function(error, stdout, stderr) {
+const execCMD = function(cmd){
+  child_process.exec(cmd, function(error, stdout, stderr) {
     if(error) {
         console.error('error: ' + error);
         return;
