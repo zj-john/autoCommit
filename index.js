@@ -28,7 +28,7 @@ const crawlerMeta = new crawler({
         });
         utils.export_to_file(JSON.stringify(content), './file/' + moment().format("YYYY-MM-DDTHH-mm-ss") + '.txt');
         // 需要先进入到代码所在的目录，再进行git操作
-        const cmd = 'cd /D '+ __dirname + ' && git add --all && git commit -m "update" && git push origin master';
+        const cmd = 'cd /D '+ __dirname + ' && git add --all :/ && git commit -m "update" && git push origin master';
         utils.exec_cmd(cmd);
       }
     }
