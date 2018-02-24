@@ -4,7 +4,7 @@
   "description": "a auto commit tool for git with node",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
+    "git": "node index.js",
     "task": "node task.js"
   },
   "repository": {

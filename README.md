@@ -7,8 +7,8 @@ fork后执行以下操作即可
 
 ```
 # 立即更新一次git
-npm start
+npm run git
 
 # 设置更新计划任务
-npm task
+npm run task
 ```
