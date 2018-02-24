@@ -1,6 +1,8 @@
 const process = require('process');
 const child_process = require("child_process");
 const fs = require('fs');
+const os = require('os');
+const XLSX = require('xlsx');
 
 // 执行命令
 const exec_cmd = function(cmd){
@@ -15,11 +17,28 @@ const exec_cmd = function(cmd){
 }
 
 // 判断当前环境是 windows还是linux
-// 不太确定此写法是否正确和完整，有不对的地方请指正，谢谢。
 const get_env = function() {
-  return process.env.OS? 'win': 'linux';
+  const os_platform= os.platform();
+  let env;
+  switch(os_platform) {
+    case 'linux':
+      env = 'linux';
+      break;
+    case 'win32':
+      env = 'windows';
+      break;
+    case 'win64':
+      env = 'windows';
+      break;
+    case 'darwin':
+      env = 'linux';
+      break;
+    default:
+      env = 'linux';
+      break;
+  }
+  return env;
 }
-
 
 // 写入文件
 const export_to_file = (data, filename) => {
@@ -32,11 +51,20 @@ const export_to_file = (data, filename) => {
   });
 }
 
+// 打开excel
+const open_excel = (filename) => {
+  const workbook = XLSX.readFile(filename);
+  const today = new Date();
+  const year = today.getFullYear();
+  return workbook.Sheets[year];
+}
+
 
 function utils(){
   this.exec_cmd = exec_cmd;
   this.get_env = get_env;
   this.export_to_file = export_to_file;
+  this.open_excel = open_excel;
 }
 
 module.exports = utils;
