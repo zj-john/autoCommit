@@ -54,17 +54,24 @@ const export_to_file = (data, filename) => {
 // 打开excel
 const open_excel = (filename) => {
   const workbook = XLSX.readFile(filename);
-  const today = new Date();
-  const year = today.getFullYear();
-  return workbook.Sheets[year];
+  return workbook;
 }
 
+const read_excel = (worksheet) => {
+  return XLSX.utils.sheet_to_json(worksheet)
+}
+
+const write_excel = (workbook, filename) => {
+  XLSX.writeFile(workbook, filename);
+}
 
 function utils(){
   this.exec_cmd = exec_cmd;
   this.get_env = get_env;
   this.export_to_file = export_to_file;
   this.open_excel = open_excel;
+  this.write_excel = write_excel;
+  this.read_excel = read_excel;
 }
 
 module.exports = utils;
