@@ -73,7 +73,8 @@ const newHandleFunction = (error, res, done) => {
 }
 
 const save_to_excel = (data) => {
-  const workbook = XLSX.readFile('./file/git_explore.xlsx');
+  console.log(__dirname);
+  const workbook = XLSX.readFile(__dirname + '/file/git_explore.xlsx');
   const worksheet = workbook.Sheets["2018"];
   const old_data = XLSX.utils.sheet_to_json(worksheet);
   const _new_data = old_data.concat(data);
@@ -154,7 +155,7 @@ const save_to_excel = (data) => {
       }
   };
   //console.log(wb);
-  XLSX.writeFile(wb, './file/git_explore.xlsx');
+  XLSX.writeFile(wb, __dirname + '/file/git_explore.xlsx');
 
 }
 // 初始化crawler对象，赋默认属性
