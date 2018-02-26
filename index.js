@@ -73,7 +73,6 @@ const newHandleFunction = (error, res, done) => {
 }
 
 const save_to_excel = (data) => {
-  console.log(__dirname);
   const workbook = XLSX.readFile(__dirname + '/file/git_explore.xlsx');
   const worksheet = workbook.Sheets["2018"];
   const old_data = XLSX.utils.sheet_to_json(worksheet);
