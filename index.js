@@ -78,7 +78,7 @@ const save_to_excel = (data) => {
   const old_data = XLSX.utils.sheet_to_json(worksheet);
   const _new_data = old_data.concat(data);
   const _headers = ["name","desc","language","star","fork","time"];
-  console.log(data);
+  //console.log(data);
   var headers = _headers
       .map((v, i) => Object.assign({}, {v: v, position: String.fromCharCode(65+i) + 1 }))
       // 转换成 worksheet 需要的结构
@@ -153,7 +153,7 @@ const save_to_excel = (data) => {
           "2018": Object.assign({}, output, { '!ref': ref })
       }
   };
-  console.log(wb);
+  //console.log(wb);
   XLSX.writeFile(wb, './file/git_explore.xlsx');
 
 }
