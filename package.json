@@ -26,6 +26,6 @@
   "dependencies": {
     "crawler": "^1.0.5",
     "moment": "^2.18.1",
-    "xlsx": "^0.12.2"
+    "xlsx": "^0.17.0"
   }
 }
